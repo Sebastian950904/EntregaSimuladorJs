@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 4,
-      nombre: "BarrasProteicasX12Chocolate",
+      nombre: "BarrasProteicasX12-Chocolate",
       precio: 4000,
       imagen: "imagenes/BarraP.jpg",
     },
@@ -38,12 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  let carrito = [];
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const divisa = "$";
   const DOMitems = document.querySelector("#items");
   const DOMcarrito = document.querySelector("#carrito");
   const DOMtotal = document.querySelector("#total");
   const DOMbotonVaciar = document.querySelector("#boton-vaciar");
+  const DOMbotonFinalizar = document.querySelector("#botonFinalizar");
 
   function renderizarProductos() {
     baseDeDatos.forEach((info) => {
@@ -85,7 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
     carrito.push(evento.target.getAttribute("marcador"));
     renderizarCarrito();
   }
+  const saveLocal = () => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  };
 
+  JSON.parse(localStorage.getItem("carrito"));
   // Funciones
 
   /**
@@ -95,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     baseDeDatos.forEach((info) => {
       // Estructura
       const miNodo = document.createElement("div");
-      miNodo.classList.add("card", "col-sm-4", "text-bg-dark");
+      miNodo.classList.add("card", "col-sm-4", "text-bg-dark", "border-light");
       // Body
       const miNodoCardBody = document.createElement("div");
       miNodoCardBody.classList.add("card-body");
@@ -113,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       miNodoPrecio.textContent = `${info.precio}${divisa}`;
       // Boton
       const miNodoBoton = document.createElement("button");
-      miNodoBoton.classList.add("btn", "btn-primary");
+      miNodoBoton.classList.add("btn", "btn-info");
       miNodoBoton.textContent = "Comprar";
       miNodoBoton.setAttribute("marcador", info.id);
       miNodoBoton.addEventListener("click", anyadirProductoAlCarrito);
@@ -130,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function anyadirProductoAlCarrito(evento) {
     carrito.push(evento.target.getAttribute("marcador"));
     renderizarCarrito();
+    saveLocal();
   }
 
   function renderizarCarrito() {
@@ -143,12 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const numeroUnidadesItem = carrito.reduce((total, itemId) => {
         return itemId === item ? (total += 1) : total;
       }, 0);
+
       const miNodo = document.createElement("li");
-      miNodo.classList.add("list-group-item", "text-right", "mx-2");
+      miNodo.classList.add("list-group-item", "text-bg-dark", "mx-2");
       miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
       // Boton de borrar
+
       const miBoton = document.createElement("button");
-      miBoton.classList.add("btn", "btn-danger", "mx-5");
+
+      miBoton.classList.add("btn", "btn-danger", "mx-1");
       miBoton.textContent = "X";
       miBoton.style.marginLeft = "1rem";
       miBoton.dataset.item = item;
@@ -165,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carrito = carrito.filter((carritoId) => {
       return carritoId !== id;
     });
+    saveLocal();
     renderizarCarrito();
   }
 
@@ -182,8 +192,23 @@ document.addEventListener("DOMContentLoaded", () => {
     carrito = [];
     renderizarCarrito();
   }
+  function ventaFin() {
+    carrito = [];
+    renderizarCarrito();
+    Swal.fire({
+      position: "top",
+      icon: "success",
+      imageUrl: "imagenes/Happy face_Flatline.png",
+      imageWidth: 400,
+      imageHeight: 300,
+      title: "Muchas gracias por tu compra!",
+      showConfirmButton: false,
+      timer: 4500,
+    });
+  }
 
   DOMbotonVaciar.addEventListener("click", vaciarCarrito);
+  DOMbotonFinalizar.addEventListener("click", ventaFin);
 
   renderizarProductos();
   renderizarCarrito();

@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-   <title >FittLove|Productos</title>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title >FittLove|Productos</title>
   </head>
-  <body class="bg-primary-subtle">
+  
+  <body>
     <header >
-      <h2 class="text-center ">envio gratis en compras superiores a $8000</h2>
       <nav class="navbar  navbar-dark bg-dark   py-2 12. text-white  ">
         <div class="container ">
           <h1>FITLOVE</h1>
@@ -19,92 +22,66 @@
       </nav>
     </header>
     <main>
-      <h1 class="title text-center py-4">Nuestros Productos</h1>
+      <section class="container ">
+        <h2 class="title text-center py-4  ">Nuestros Productos</h2>
       <!-- section -->
-      <div id="ContenedorPadre" class="container-fluid  row g-4 text-center align-items-center ">
-        <div class="col ">
+      <div id="ContenedorPadre" class=" container-fluid  row g-4 text-center align-items-center ">
+        <div class="col" >
           <!-- Elementos generados a partir del JSON -->
-          <main id="items" class="col row g-4   "></main>
+          <main id="items" class="  row g-4 "></main>
           <!-- Carrito -->
-          <aside class="col  g-4">
+          <aside class="col g-4">
               <h2>Carrito</h2>
               <!-- Elementos del carrito -->
               <ul id="carrito" class="list-group  " ></ul>
               <hr>
               <!-- Precio total -->
-              <p class="text-right">Total: <span id="total"></span>&dollar;</p>
-              <button id="boton-vaciar" class="btn btn-outline-primary py-2 " >Vaciar</button>
+              <p class="text-white ">Total: <span id="total"></span>&dollar;</p>
+              <button id="boton-vaciar" class="btn btn-outline-info py-2 " >Vaciar</button>
+              <button id="botonFinalizar" class="btn btn-outline-info py-2 " >Finalizar</button>
           </aside>
       </div>
-        <!-- <div class="row g-4 ">
-          <div class="col"> -->
-            <!-- <div class="card text-bg-dark mb-3" style="width: 18rem;">
-              <img src="imagenes/proteina.jpg" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Proteina</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <h3>$12000</h3>
-                <button id="btnCompra" class="btn btn-outline-primary">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card text-bg-dark mb-3"style="width: 18rem;">
-              <img src="imagenes/proteina.jpg" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Creatina</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <h3>$10000</h3>
-                <button id="btnCompra" class="btn btn-outline-primary">Comprar</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="col">
-              <div class="card text-bg-dark mb-3"style="width: 18rem;">
-                <img src="imagenes/proteina.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Barras ProteicasX12</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <h3>$3800</h3>
-                  <button id="btnCompra" class="btn btn-outline-primary">Comprar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card text-bg-dark mb-3"style="width: 18rem;">
-              <img src="imagenes/proteina.jpg" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Pre Entreno</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <h3>$6000</h3>
-                <button id="btnCompra" class="btn btn-outline-primary">Comprar</button>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div> 
-    </main>   -->
-    <footer >
-    
-        <div class="container text-center py-4 " >
+      <section>
+        <div class="container text-center py-4 text-black" >
           <h3>10% DE DESCUENTO POR SUSCRIBIRTE A NUESTRO NEWSLETTER </h3>
           <p>Aprovechá este descuento en tu próxima compra online</p>
-          <div class="row py-4  align-items-center justify-content-center">
-            <div class="col-md-4 ">
-              <input type="text" class="form-control" id="validationCustom01" value="Ingrese su email" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+        </div>
+      </section>
+      <form class="container text-center  formulario ">
+        <div class="mx-auto py-4 "  >
+          <label for="nombre">Nombre</label>
+          <input type="text"
+          placeholder="Tu Nombre"
+          id="nombre">
+         
+          <label for="email">E-mail</label>
+          <input 
+          type="email"
+          placeholder="Tu E-mail "
+          id="email">          
+        </div>
+            <div>
+              <input type="submit" value="Enviar" class="d-grid gap-2 col-6 mx-auto btn btn-outline-info py-2   " >
             </div>
-            <div class="col-md-1  ">
-              <button class="btn btn-primary"> <a class="text-white" href="./faq.html" style="text-decoration:none">SUSCRIBIRME</a></button>   
-            </div>
-          </div>
-        </div>  
+       </form>  
+      </section>   
+    <footer >
+      <div class="text-center footerSm  container  text-bg-dark "  >
+        <div class=" mx-2">
+          <h2>Siguenos en nuestras redes </h2> 
+                  <a target="_blank" href="https://www.facebook.com/"><i class="fab  fa-facebook "></i></a>
+                  <a target="_blank" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/"><i class="fab  fa-instagram"></i></a>     
+        </div>
+                <div class=" py-2">
+                  &copy; Copyright 2022 <a href="#"> | Creada por David Suarez
+                  <a href=""></a>
+                </div>
+       </div> 
     </footer>
-    <script src="productos.js"></script> 
+     <script src="productos.js"></script> 
+     <script src="formulario.js"></script> 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
   </body>
 </html>

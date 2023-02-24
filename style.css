@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #166461;
+}
+footer {
+  background-color: black;
+  padding: 2rem 0 0 0;
+}
+.footerSm {
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  margin-top: 1rem;
+  font-size: 40px;
+}
+p {
+  font-size: 1.5rem;
+}
+/* formulario */
+.error {
+  background-color: rgb(185, 0, 0);
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  text-transform: uppercase;
+}
+.correcto {
+  background-color: rgb(74, 780, 0);
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+.btn {
+  margin: 1rem;
+}
