@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "Proteina",
+    "precio": 12000,
+    "imagen": "imagenes/proteina.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Creatina",
+    "precio": 10000,
+    "imagen": "imagenes/proteina.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "PreEntreno",
+    "precio": 6800,
+    "imagen": "imagenes/proteina.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Barras Proteicas X12-Chocolate",
+    "precio": 4000,
+    "imagen": "imagenes/BarraP.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Barras Proteicas X12-Vainilla",
+    "precio": 4000,
+    "imagen": "imagenes/BarraP.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Barras roteicas X12-Frutilla",
+    "precio": 4000,
+    "imagen": "imagenes/BarraP.jpg"
+  }
+]

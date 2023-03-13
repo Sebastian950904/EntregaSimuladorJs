@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,30 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.scss">
     <link rel="stylesheet" href="style.css">
-    <title >FittLove|Productos</title>
+    <title >  Fitt Love | Productos</title>
   </head>
   
   <body>
-    <header >
-      <nav class="navbar  navbar-dark bg-dark   py-2 12. text-white  ">
+    <header class="sticky-top">
+      <nav class="navbar bg-opacity-75 navbar-dark bg-dark navbar-expand-lg  py-2 12. text-white  ">
         <div class="container ">
           <h1>FITLOVE</h1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="Imagenes/LogoPesa.png" alt="logo" width="50" height="50">
+          </button>
           </a> 
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto  ;">
+              <li class="nav-item">
+                <a class="nav-link   " aria-current="page" href="./index.html">Inicio</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link active" href="./index.html">Productos</a>
+              </li>    
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Servicios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Preguntas </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Contacto</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
     <main>
-      <section class="container ">
+      <section class="container  ">
         <h2 class="title text-center py-4  ">Nuestros Productos</h2>
       <!-- section -->
-      <div id="ContenedorPadre" class=" container-fluid  row g-4 text-center align-items-center ">
-        <div class="col" >
+      <div id="ContenedorPadre" class=" container-fluid  g-4 text-center align-items-center ">
+        <div>
           <!-- Elementos generados a partir del JSON -->
-          <main id="items" class="  row g-4 "></main>
+          <main id="items" class="row g-4 "></main>
           <!-- Carrito -->
-          <aside class="col g-4">
-              <h2>Carrito</h2>
+          <aside >
+              <h2 class="title">Carrito</h2>
               <!-- Elementos del carrito -->
               <ul id="carrito" class="list-group  " ></ul>
               <hr>
@@ -47,26 +70,24 @@
           <p>Aprovechá este descuento en tu próxima compra online</p>
         </div>
       </section>
-      <form class="container text-center  formulario ">
+      <form class="container text-center text-bg-dark formulario border border-white  ">
         <div class="mx-auto py-4 "  >
           <label for="nombre">Nombre</label>
-          <input type="text"
+          <input class="container" type="text"
           placeholder="Tu Nombre"
-          id="nombre">
-         
-          <label for="email">E-mail</label>
-          <input 
-          type="email"
-          placeholder="Tu E-mail "
-          id="email">          
+          id="nombre">    
         </div>
-            <div>
+        <div class="mx-auto py-4 ">
+          <label for="email">E-mail</label>
+          <input class="container" type="email"
+          placeholder="Tu E-mail "
+          id="email">      
+        </div>
               <input type="submit" value="Enviar" class="d-grid gap-2 col-6 mx-auto btn btn-outline-info py-2   " >
-            </div>
        </form>  
       </section>   
     <footer >
-      <div class="text-center footerSm  container  text-bg-dark "  >
+      <div class="text-center footerSm  container text-bg-dark border border-white   "  >
         <div class=" mx-2">
           <h2>Siguenos en nuestras redes </h2> 
                   <a target="_blank" href="https://www.facebook.com/"><i class="fab  fa-facebook "></i></a>
@@ -79,6 +100,7 @@
                 </div>
        </div> 
     </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
      <script src="productos.js"></script> 
      <script src="formulario.js"></script> 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

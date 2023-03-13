@@ -1,43 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const baseDeDatos = [
-    {
-      id: 1,
-      nombre: "Proteina",
-      precio: 12000,
-      imagen: "imagenes/proteina.jpg",
-    },
-    {
-      id: 2,
-      nombre: "Creatina",
-      precio: 10000,
-      imagen: "imagenes/proteina.jpg",
-    },
-    {
-      id: 3,
-      nombre: "PreEntreno",
-      precio: 6800,
-      imagen: "imagenes/proteina.jpg",
-    },
-    {
-      id: 4,
-      nombre: "BarrasProteicasX12-Chocolate",
-      precio: 4000,
-      imagen: "imagenes/BarraP.jpg",
-    },
-    {
-      id: 5,
-      nombre: "BarrasProteicasX12-Vainilla",
-      precio: 4000,
-      imagen: "imagenes/BarraP.jpg",
-    },
-    {
-      id: 6,
-      nombre: "BarrasProteicasX12-Frutilla",
-      precio: 4000,
-      imagen: "imagenes/BarraP.jpg",
-    },
-  ];
-
+  fetch("baseDeDatos.json")
+    .then((response) => response.json())
+    .then((data) => {
+      baseDeDatos = data;
+      renderizarProductos(baseDeDatos);
+    });
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const divisa = "$";
   const DOMitems = document.querySelector("#items");
@@ -106,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       miNodoCardBody.classList.add("card-body");
       // Titulo
       const miNodoTitle = document.createElement("h5");
-      miNodoTitle.classList.add("card-title");
+      miNodoTitle.classList.add("card-title", "py-2");
       miNodoTitle.textContent = info.nombre;
       // Imagen
       const miNodoImagen = document.createElement("img");
@@ -118,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       miNodoPrecio.textContent = `${info.precio}${divisa}`;
       // Boton
       const miNodoBoton = document.createElement("button");
-      miNodoBoton.classList.add("btn", "btn-info");
+      miNodoBoton.classList.add("btn", "btn-outline-info");
       miNodoBoton.textContent = "Comprar";
       miNodoBoton.setAttribute("marcador", info.id);
       miNodoBoton.addEventListener("click", anyadirProductoAlCarrito);
@@ -133,6 +100,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   function anyadirProductoAlCarrito(evento) {
+    Toastify({
+      text: "Producto agregado",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: " #166461",
+        borderRadius: "2rem",
+      },
+      onClick: function () {},
+    }).showToast();
     carrito.push(evento.target.getAttribute("marcador"));
     renderizarCarrito();
     saveLocal();
@@ -170,6 +152,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function borrarItemCarrito(evento) {
+    Toastify({
+      text: "Producto eliminado",
+      duration: 3000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: " #AE0505 ",
+        borderRadius: "2rem",
+      },
+      onClick: function () {},
+    }).showToast();
     const id = evento.target.dataset.item;
     carrito = carrito.filter((carritoId) => {
       return carritoId !== id;
@@ -189,8 +186,24 @@ document.addEventListener("DOMContentLoaded", () => {
       .toFixed(2);
   }
   function vaciarCarrito() {
-    carrito = [];
-    renderizarCarrito();
+    Swal.fire({
+      title: "¿Estas seguro?",
+      icon: "question",
+      html: "Se van a borrar todos tus productos ",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Si',
+      cancelButtonText: '<i class="fa fa-thumbs-down"></i> No',
+      cancelButtonAriaLabel: "Thumbs down",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = [];
+        renderizarCarrito();
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   }
   function ventaFin() {
     carrito = [];
@@ -199,11 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
       position: "top",
       icon: "success",
       imageUrl: "imagenes/Happy face_Flatline.png",
-      imageWidth: 400,
-      imageHeight: 300,
+      imageWidth: 200,
+      imageHeight: 200,
       title: "Muchas gracias por tu compra!",
       showConfirmButton: false,
-      timer: 4500,
+      timer: 3500,
     });
   }
 
